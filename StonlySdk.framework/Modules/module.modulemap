@@ -1,0 +1,4 @@
+framework module StonlySdk {
+  header "StonlySdk-Swift.h"
+  requires objc
+}
