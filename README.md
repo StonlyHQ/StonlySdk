@@ -1,12 +1,12 @@
 ## Installation
 
-The simplest and most convenient way to incorporate StonlySdk is via CocoaPods. You need to add to your podfile the following line:
+The simplest and most convenient way to incorporate StonlySdk is via CocoaPods. You need to add the following line to your podfile:
 
 ```
 pod StonlySdk
 ```
 
-The standard approach to defining version to use apply.
+The standard approach to defining version is to use apply.
 
 ## Usage
 
@@ -18,7 +18,7 @@ Once you integrated SDK via cocoapods you simply need to start with an import st
 import StonlySdk
 ```
 
-To present popup in its simplest form you only need to add:
+To present popup in it's simplest form you only need to add:
 
 ```
 extension MyViewController: Guidable { }
@@ -34,7 +34,7 @@ More on `typeOfScreenYouWantToPresent` and the method itself in following sectio
 
 ### Initialization
 
-Before first use of the framework it needs to be initialized. Usually there are two strategies. One is to initialize framework as soon as possible (potentially long before first use) in AppDelegate so that when the time come the framework will be ready. The second approach is to initialize it before its first actual use. Best approach will depend on the nature of the app and expected user behaviors.
+Before first use of the framework it needs to be initialized. Usually there are two strategies. One is to initialize framework as soon as possible (potentially long before first use) in AppDelegate so that when the time comes the framework will be ready. The second approach is to initialize it just before it's first actual use. Best approach will depend on the nature of the app and expected user behaviors.
 
 ```
 Stonly.shared.initialize(widgetId: String, completion: ((Stonly.State) -> Void)?)
@@ -81,11 +81,11 @@ In current version there is a wrapper for presenting pop ups using `FloatingPane
 Popups can be customized by 2 parameters:
 
 - language
-- accent colour
+- accent color
 
-`language` should be in ISO 639-2 or ISO 630-1 format. Although attribute is of String type if developer pass string longer than 3 characters remaining part will be striped out and only up to first 3 characters will be taken into account.
+`language` should be in ISO 639-2 or ISO 630-1 format. Although attribute is of String type if developer passes string longer than 3 characters remaining part will be stripped out and only first 3 characters will be taken into account.
 
-`accent` is of UIColor type. Alpha value of a colour will be ignored assuming full alpha.
+`accent` is of UIColor type. Alpha value of a color will be ignored assuming full alpha.
 
 Both parameters are optional. Creation of object could look like:
 
@@ -95,7 +95,7 @@ let theme = ThemeConfig(language: "en", accent: .green)
 
 ### Events Listening
 
-To be able to listen to events you need to create listener object and define to which events you want to listen and which completion block should be called if even should happen. Events you can listen to:
+To be able to listen to events you need to create listener object and define which events you want to listen to and which completion block should be called if an event should happen. Events you can listen to are:
 
 - currentStep
 - currentSteps
@@ -110,7 +110,7 @@ To be able to listen to events you need to create listener object and define to 
 - stonlyWidgetFullscreenOpen
 - stonlyWidgetFullscreenClose
 
-To register interest in events you have to:
+To actually listen to the specific event you have to:
 
 ```
 let listener = EventListener()
@@ -125,7 +125,7 @@ You can add multiple listeners to different types of events but only one closure
 
 ## Notice
 
-Framework is delivered in a form of universal framework (so that it can be launched on a simulator as well as a device). Please keep in mind that before submitting to AppStore you need to stripe binaries from unnecessary architectures.
+Framework is delivered in a form of universal framework (so that it can be launched on a simulator as well as a device). Please keep in mind that before submitting to AppStore you need to strip binaries from unnecessary architectures.
 
 ## License
 
