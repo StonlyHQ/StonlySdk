@@ -1,12 +1,12 @@
 ## Installation
 
-The simplest and most convenient way to incorporate StonlySdk is via CocoaPods. You need to add the following line to your podfile:
+The simplest and the most convenient way to incorporate StonlySdk is via CocoaPods. You need to add the following line to your podfile:
 
 ```
 pod StonlySdk
 ```
 
-The standard approach to defining version is to use apply.
+The good practise would be to specify a particular version of the pod you wish to download.
 
 ## Usage
 
@@ -34,7 +34,7 @@ More on `typeOfScreenYouWantToPresent` and the method itself in following sectio
 
 ### Initialization
 
-Before first use of the framework it needs to be initialized. Usually there are two strategies. One is to initialize framework as soon as possible (potentially long before first use) in AppDelegate so that when the time comes the framework will be ready. The second approach is to initialize it just before it's first actual use. Best approach will depend on the nature of the app and expected user behaviors.
+Before first use of the framework it needs to be initialized. Usually there are two strategies. One is to initialize framework as soon as possible (potentially long before the first use) in AppDelegate so that when the time comes the framework will be ready. The second approach is to initialize it just before it's first actual use. Best approach will depend on the nature of the app and expected user behaviors.
 
 ```
 Stonly.shared.initialize(widgetId: String, completion: ((Stonly.State) -> Void)?)
@@ -42,7 +42,7 @@ Stonly.shared.initialize(widgetId: String, completion: ((Stonly.State) -> Void)?
 
 `completion` is optional so that the first strategy could be implemented without mention of the completion in so called "fire and forget" way.
 
-If you decide that the second strategy is more applicable to your needs you can implement `completion` so that you get informed when initialization is finished and you will get to know if it succeeded. For more check Stonly.State.
+If you decide that the second strategy is more applicable in your use case you can implement `completion` so that you get informed when initialization is finished and you will get to know if it succeeded. For more check Stonly.State.
 
 ### Showing Guide
 
@@ -70,7 +70,7 @@ try? present(screenType: screenType)
 
 where `screenType` is `ScreenType.knowledgeBase` with associated value of `KnowledgeBaseConfiguration`.
 
-The only non optional attribute here is `baseURL`. `containerId` abd `stepId` are optional. Similarly to `GuideConfiguration` it also can take `theme` and `eventsListener` objects.
+The only non optional attribute there is `baseURL`. `containerId` and `stepId` are optional. Similarly to `GuideConfiguration` it also can take `theme` and `eventsListener` objects.
 
 ### Other forms of presentation
 
@@ -83,7 +83,7 @@ Popups can be customized by 2 parameters:
 - language
 - accent color
 
-`language` should be in ISO 639-2 or ISO 630-1 format. Although attribute is of String type if developer passes string longer than 3 characters remaining part will be stripped out and only first 3 characters will be taken into account.
+`language` should be in ISO 639-2 or ISO 630-1 format. Although attribute is of `String` type if developer passes string longer than 3 characters remaining part will be stripped out and only (up to) first 3 characters will be taken into account.
 
 `accent` is of UIColor type. Alpha value of a color will be ignored assuming full alpha.
 
@@ -121,11 +121,11 @@ listener.add(for: .currentStep) { params in
 
 `param` is of `[String : Any]?` type.
 
-You can add multiple listeners to different types of events but only one closure will be called for a specific event. If you add closure for the same event more than once, the last added closure will be called when event gets triggered.
+You can add multiple listeners to different types of events but only one closure will be called for a specific event. If you add closure for the same event more than once, the last added closure will be called when the event gets triggered.
 
 ## Notice
 
-Framework is delivered in a form of universal framework (so that it can be launched on a simulator as well as a device). Please keep in mind that before submitting to AppStore you need to strip binaries from unnecessary architectures.
+Framework is delivered in a form of universal framework (so that it can be launched on a simulator as well as a device). Please keep in mind that before submitting to the AppStore you need to strip binaries from unnecessary architectures.
 
 ## License
 
