@@ -1,9 +1,9 @@
 //
 //  Stonly.h
-//  STN
+//  Stonly
 //
-//  Created by STN on 11/04/2020.
-//  Copyright © 2020 STN. All rights reserved.
+//  Created by Stonly on 11/04/2020.
+//  Copyright © 2020 Stonly. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
