@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|  
     s.name              = 'StonlySdk'
     s.version           = '1.0.0'
-    s.summary        = 'Stonly framework'
+    s.summary        = 'Stonly library'
     s.homepage      = 'https://github.com/StonlyHQ/StonlySdk'
 
     s.author            = { 'Stonly' => 'developers@stonly.com' }
