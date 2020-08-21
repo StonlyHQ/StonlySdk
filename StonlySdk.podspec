@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
     s.license           = { :type => 'MIT', :file => 'LICENSE' }
 
     s.platform          = :ios
-    s.source            = { :git => 'https://github.com/StonlyHQ/StonlySdk', :tag => '1.0.0' }   
+    s.source            = { :git => 'https://github.com/StonlyHQ/StonlySdk.git', :tag => '1.0.0' }   
 
     s.swift_version     = '5.0' 
     s.ios.deployment_target = '11.0'
