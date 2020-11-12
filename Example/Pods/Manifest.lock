@@ -1,0 +1,20 @@
+PODS:
+  - FloatingPanel (1.7.4)
+  - StonlySdk (1.0.0):
+    - FloatingPanel (= 1.7.4)
+
+DEPENDENCIES:
+  - StonlySdk (= 1.0.0)
+
+SPEC REPOS:
+  trunk:
+    - FloatingPanel
+    - StonlySdk
+
+SPEC CHECKSUMS:
+  FloatingPanel: 3c9d0e30fe350e1613157557769d2ec97f76b96b
+  StonlySdk: f495d0d02fe5f56cf6523095ed778f8d25e3e54f
+
+PODFILE CHECKSUM: b9d862443c2f08b14f3c3beb239aff8025008523
+
+COCOAPODS: 1.9.1
