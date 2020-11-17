@@ -34,7 +34,8 @@ class ViewController: UIViewController, Guidable {
     private func customizeNavigation() {
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.barTintColor = UIColor.init(red: 40.0/255.0, green: 61.0/255.0, blue: 123.0/255.0, alpha: 1.0)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 40.0/255.0, green: 61.0/255.0, blue: 123.0/255.0, alpha: 1.0)
+        navigationController?.navigationBar.tintColor = .white
     }
     
     private func customizeButtons() {
@@ -50,13 +51,13 @@ class ViewController: UIViewController, Guidable {
     
     @IBAction func modalButtonTapped(_ sender: UIButton) {
         //https://stonly.com/guide/en/stonly-embedded-on-home-page-197/Steps/1139
-        let config = GuideConfiguration(explanationId: "stonly-embedded-on-home-page-197", stepId: "1139")
+        let config = GuideConfiguration(explanationId: "197", stepId: "1139")
         try? present(screenType: .guide(config), floatingPanelDelegate: fpDelegate)
     }
     
     @IBAction func fullScreenGuideButtonTapped(_ sender: UIButton) {
         //https://stonly.com/guide/en/stonly-embedded-on-home-page-197/Steps/1139
-        let config = GuideConfiguration(explanationId: "stonly-embedded-on-home-page-197", stepId: "1139")
+        let config = GuideConfiguration(explanationId: "197", stepId: "1139")
         let newScreen = StonlyWebViewController()
         newScreen.view.backgroundColor = .white
         try? newScreen.start(screenType: .guide(config))

@@ -1,0 +1,137 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.1 (swiftlang-1200.0.41 clang-1200.0.32.8)
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name StonlySdk
+import FloatingPanel
+import Foundation
+import Swift
+import UIKit.UIColor
+import UIKit
+import WebKit
+public typealias EventHandler = ([Swift.String : Any]?) -> Swift.Void
+public class EventListener {
+  public init()
+  public func add(for event: StonlySdk.Event, handler: @escaping StonlySdk.EventHandler)
+  public func handle(event: StonlySdk.Event, with parameters: [Swift.String : Any]?)
+  @objc deinit
+}
+public class GuideConfiguration {
+  final public let theme: StonlySdk.ThemeConfig?
+  final public let eventsListener: StonlySdk.EventListener?
+  public init(explanationId: Swift.String, stepId: Swift.String, theme: StonlySdk.ThemeConfig? = nil, eventsListener: StonlySdk.EventListener? = nil)
+  @objc deinit
+}
+public enum Event : Swift.String {
+  case currentStep
+  case currentSteps
+  case endOfExplanation
+  case explanationIntroduction
+  case goBackClicked
+  case goToNewRequest
+  case openFrontChat
+  case openIntercom
+  case openZendeskChat
+  case stonlyDataTransmission
+  case stonlyWidgetFullscreenOpen
+  case stonlyWidgetFullscreenClose
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol Manager {
+  var isEnabled: Swift.Bool { get }
+}
+public enum ScreenType {
+  case knowledgeBase(StonlySdk.KnowledgeBaseConfiguration)
+  case guide(StonlySdk.GuideConfiguration)
+}
+@objc @_inheritsConvenienceInitializers public class StonlyWebViewController : UIKit.UIViewController {
+  public var errorView: UIKit.UIView?
+  public var closeIcon: UIKit.UIImage? {
+    get
+    set
+  }
+  final public let webView: WebKit.WKWebView
+  @objc override dynamic public func viewDidLoad()
+  public func start(screenType: StonlySdk.ScreenType) throws
+  public func refresh() throws
+  @objc deinit
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+extension StonlyWebViewController : WebKit.WKScriptMessageHandler {
+  @objc dynamic public func userContentController(_ userContentController: WebKit.WKUserContentController, didReceive message: WebKit.WKScriptMessage)
+}
+extension StonlyWebViewController : WebKit.WKUIDelegate {
+  @objc dynamic public func webView(_ webView: WebKit.WKWebView, createWebViewWith configuration: WebKit.WKWebViewConfiguration, for navigationAction: WebKit.WKNavigationAction, windowFeatures: WebKit.WKWindowFeatures) -> WebKit.WKWebView?
+}
+public enum Errors : Swift.Error {
+  case notInitialized
+  public static func == (a: StonlySdk.Errors, b: StonlySdk.Errors) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+@_hasMissingDesignatedInitializers public class Stonly : StonlySdk.Manager {
+  public enum State {
+    case enabled
+    case disabled
+    case enabling
+    case unknown
+    public static func == (a: StonlySdk.Stonly.State, b: StonlySdk.Stonly.State) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public static let shared: StonlySdk.Stonly
+  public var isEnabled: Swift.Bool {
+    get
+  }
+  public func initialize(widgetId: Swift.String, completion: ((StonlySdk.Stonly.State) -> Swift.Void)? = nil)
+  public func reload(stonlyViewController: StonlySdk.StonlyWebViewController)
+  @objc deinit
+}
+public class KnowledgeBaseConfiguration {
+  final public let theme: StonlySdk.ThemeConfig?
+  final public let eventsListener: StonlySdk.EventListener?
+  public init(baseURL: Swift.String, containerId: Swift.String? = nil, stepId: Swift.String? = nil, theme: StonlySdk.ThemeConfig? = nil, eventsListener: StonlySdk.EventListener? = nil)
+  @objc deinit
+}
+public protocol Guidable {
+  func present(screenType: StonlySdk.ScreenType, floatingPanelDelegate: FloatingPanel.FloatingPanelControllerDelegate?, animated: Swift.Bool) throws
+}
+extension Guidable where Self : UIKit.UIViewController {
+  public func present(screenType: StonlySdk.ScreenType, floatingPanelDelegate: FloatingPanel.FloatingPanelControllerDelegate? = nil, animated: Swift.Bool = true) throws
+}
+extension StonlyWebViewController : StonlySdk.ErrorViewDelegate {
+  public func didTapReload(from view: StonlySdk.ErrorView)
+}
+extension UIColor {
+  public static var stonlyPink: UIKit.UIColor {
+    get
+  }
+  public static var stonlyGrey: UIKit.UIColor {
+    get
+  }
+}
+public struct ThemeConfig {
+  public let language: Swift.String?
+  public let accent: UIKit.UIColor?
+  public init(language: Swift.String? = nil, accent: UIKit.UIColor? = nil)
+}
+public protocol ErrorView : UIKit.UIView {
+  var delegate: StonlySdk.ErrorViewDelegate? { get set }
+}
+public protocol ErrorViewDelegate : AnyObject {
+  func didTapReload(from view: StonlySdk.ErrorView)
+}
+extension StonlySdk.Event : Swift.Equatable {}
+extension StonlySdk.Event : Swift.Hashable {}
+extension StonlySdk.Event : Swift.RawRepresentable {}
+extension StonlySdk.Errors : Swift.Equatable {}
+extension StonlySdk.Errors : Swift.Hashable {}
+extension StonlySdk.Stonly.State : Swift.Equatable {}
+extension StonlySdk.Stonly.State : Swift.Hashable {}

@@ -3,7 +3,7 @@
 The simplest and the most convenient way to incorporate StonlySdk is via CocoaPods. You need to add the following line to your podfile:
 
 ```
-pod StonlySdk
+pod 'StonlySdk', '1.0.1'
 ```
 
 The good practise would be to specify a particular version of the pod you wish to download.

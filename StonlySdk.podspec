@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
     s.platform          = :ios
     s.source            = { :git => 'https://github.com/StonlyHQ/StonlySdk.git', :tag => '1.0.1' }   
 
+    s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     s.swift_version     = '5.0' 
     s.ios.deployment_target = '11.0'
     s.ios.vendored_frameworks = 'StonlySdk.framework'
